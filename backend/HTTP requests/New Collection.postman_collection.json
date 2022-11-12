@@ -1,0 +1,354 @@
+{
+	"info": {
+		"_postman_id": "f22b1029-6c0f-4a30-9dca-6fdb4261e6b6",
+		"name": "New Collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "24028512"
+	},
+	"item": [
+		{
+			"name": "api-consultorio",
+			"item": [
+				{
+					"name": "roles",
+					"item": [
+						{
+							"name": "eliminar",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:4000/api/roles/636ac4ae697f26e8f8265109",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "4000",
+									"path": [
+										"api",
+										"roles",
+										"636ac4ae697f26e8f8265109"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "editar",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"nombreRol\": \"MEDICOS\",\r\n    \"estadoRol\": 2\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:4000/api/roles/636ac6eb697f26e8f826510b",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "4000",
+									"path": [
+										"api",
+										"roles",
+										"636ac6eb697f26e8f826510b"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "agregar",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"nombreRol\":\"ADMIN\",\r\n    \"estadoRol\": 1\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:4000/api/roles",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "4000",
+									"path": [
+										"api",
+										"roles"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "listarUno",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:4000/api/roles/636ac6fe697f26e8f826510d",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "4000",
+									"path": [
+										"api",
+										"roles",
+										"636ac6fe697f26e8f826510d"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "listar",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:4000/api/roles",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "4000",
+									"path": [
+										"api",
+										"roles"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "usuarios",
+					"item": [
+						{
+							"name": "eliminar",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:4000/api/usuarios/636afa7f563a740744666c71",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "4000",
+									"path": [
+										"api",
+										"usuarios",
+										"636afa7f563a740744666c71"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "editar",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n        \"idRol\": \"636ac6fe697f26e8f826510d\",\r\n        \"nombreUsuario\": \"Hernan Dario\",\r\n        \"apellidosUsuario\": \"Gomez Gomez\",\r\n        \"celularUsuario\": 3002735752,\r\n        \"correoUsuario\": \"hernanddariogomez@gmail.com\",\r\n        \"direccionUsuario\": \"cra 16 23 45\",\r\n        \"claveAcceso\": \"123456\",\r\n        \"estadoUsuario\": 1\r\n    \r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:4000/api/usuarios/636d1d441aa7ec14a60fb989",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "4000",
+									"path": [
+										"api",
+										"usuarios",
+										"636d1d441aa7ec14a60fb989"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "agregar",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"idRol\": \"636ae9ffb24c2fcc2de1b4ea\",\r\n    \"nombreUsuario\":\"Hernan Dario\",\r\n    \"apellidosUsuario\": \"Gomez Gomez\",\r\n    \"celularUsuario\": 3002735752,\r\n    \"correoUsuario\": \"hernan@gmail.com\",\r\n    \"direccionUsuario\": \"cra 16 23 45\",\r\n    \"usuarioacceso\": \"hdgomez\",\r\n    \"claveAcceso\": \"123456\",\r\n    \"estadoUsuario\": 1\r\n\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:4000/api/usuarios",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "4000",
+									"path": [
+										"api",
+										"usuarios"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "listarUno",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:4000/api/usuarios/636afa7f563a740744666c71",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "4000",
+									"path": [
+										"api",
+										"usuarios",
+										"636afa7f563a740744666c71"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "listar",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:4000/api/usuarios",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "4000",
+									"path": [
+										"api",
+										"usuarios"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "login",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"usuarioAcceso\": \"hdgomez88\",\r\n    \"claveAcceso\": \"123456\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:4000/api/usuarios/login",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "4000",
+									"path": [
+										"api",
+										"usuarios",
+										"login"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		}
+	]
+}
