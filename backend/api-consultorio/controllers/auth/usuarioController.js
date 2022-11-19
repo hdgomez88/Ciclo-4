@@ -123,11 +123,16 @@ const autenticar= async(req, res) =>{
     }
 }
 
+const crearCuenta= async(req, res) => {
+
+}
+
 export {
     agregar,
     listar,
     eliminar,
     editar,
     listarUno,
-    autenticar
+    autenticar,
+    crearCuenta
 }
