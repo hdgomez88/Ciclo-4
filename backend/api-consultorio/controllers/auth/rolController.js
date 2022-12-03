@@ -1,4 +1,6 @@
 import Rol from "../../models/auth/Rol.js";
+import Usuario from "../../models/auth/Usuario.js";
+import dominios from "../../helpers/dominios.js";
 
 const agregar= async(req, res) => {
     //EVITAR ROLES DUPLICADOS PPOR EL NOMBRE
@@ -26,6 +28,14 @@ const listar= async(req, res) => {
 const eliminar= async(req, res) => {
     //recibir los parametros por la url
     const {id}= req.params;
+
+    //validar si el rol no tiene usuario asignado
+    const existeUsuario= await Usuario.findOne({idRol: id});
+    
+    if(existeUsuario){
+        const error= new Error("Rol ya tiene un usuario asignado")
+        return res.status(400).json({msg:error.message, ok:"NO"})
+    }
     
     //validar si existe el id a eliminar
     const rol = await Rol.findById(id);
@@ -82,7 +92,11 @@ const listarUno= async(req, res) => {
         const error=new Error("Documento no encontrado.");
         return res.status(404).json({msg: error.message, ok: "NO"});
 }
-    res.json({rol});
+    res.json(rol);
+}
+const comboRoles= async(req, res) => {
+    const roles= await Rol.find({estadoRol:dominios.ESTADO_ROL_ACTIVO});
+    res.json(roles);
 }
 
 export {
@@ -90,5 +104,6 @@ export {
     listar,
     eliminar,
     editar,
-    listarUno
+    listarUno,
+    comboRoles
 }

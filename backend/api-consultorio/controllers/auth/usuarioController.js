@@ -1,5 +1,6 @@
 import Usuario from "../../models/auth/Usuario.js";
 import generarJWT from "../../helpers/generarJWT.js";
+import dominios from "../../helpers/dominios.js";
 
 const agregar= async(req, res) => {
     //EVITAR usuarios DUPLICADOS PPOR EL NOMBRE
@@ -66,7 +67,7 @@ const editar= async(req, res) => {
    //RECIBIR LOS DATOS ENVIADOS DESDE EL FORMULARIO
    usuario.idRol= req.body.idRol || usuario.idRol;
    usuario.nombreUsuario= req.body.nombreUsuario || usuario.nombreUsuario;
-   usuario.apellidoUsuario= req.body.apellidoUsuario || usuario.apellidoUsuario;
+   usuario.apellidosUsuario= req.body.apellidosUsuario || usuario.apellidosUsuario;
    usuario.celularUsuario= req.body.celularUsuario || usuario.celularUsuario;
    usuario.correoUsuario= req.body.correoUsuario || usuario.correoUsuario;
    usuario.direccionUsuario= req.body.direccionUsuario || usuario.direccionUsuario;
@@ -95,7 +96,7 @@ const listarUno= async(req, res) => {
         const error=new Error("Documento no encontrado.");
         return res.status(404).json({msg: error.message, ok: "NO"});
 }
-    res.json({usuario});
+    res.json(usuario);
 }
 
 const autenticar= async(req, res) =>{
@@ -115,7 +116,8 @@ const autenticar= async(req, res) =>{
             _id:usuario._id,
             nombreUsuario:usuario.nombreUsuario,
             usuarioAcceso:usuario.usuarioAcceso,
-            tokenJWT: generarJWT(usuario._id)
+            tokenJWT: generarJWT(usuario._id),
+            rol: usuario.idRol
         });
     }else{
         const error=new Error("Clave incorrecta.")
@@ -124,7 +126,30 @@ const autenticar= async(req, res) =>{
 }
 
 const crearCuenta= async(req, res) => {
+    //EVITAR usuarios DUPLICADOS PPOR EL NOMBRE
+    const {usuarioAcceso}=req.body;
+    
+    //validar si existe otro usuario igual
+    const existeUsuario= await Usuario.findOne({usuarioAcceso});
 
+    if (existeUsuario) {
+        const error = new Error("Usuario ya esta registrado en la base de datos")
+        return res.status(400).json({msg:error.message, ok: "NO"});
+    }
+
+    try {
+        const usuario = new Usuario(req.body);
+        const usuarioGuardado=await usuario.save();
+        res.json({body: usuarioGuardado, ok: "SI",msg: "Documento creado correctamente."});
+    } catch (error) {
+        console.log(error);
+    }
+
+}
+
+const comboMedicos= async(req,res)=>{
+    const medicos=await Usuario.find({'idRol': dominios.ID_ROL_MEDICO});
+    res.json(medicos);
 }
 
 export {
@@ -134,5 +159,6 @@ export {
     editar,
     listarUno,
     autenticar,
-    crearCuenta
+    crearCuenta,
+    comboMedicos
 }

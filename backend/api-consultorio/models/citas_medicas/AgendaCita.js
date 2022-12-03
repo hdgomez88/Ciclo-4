@@ -15,14 +15,13 @@ const agendaCitaSchema= mongoose.Schema({
         trim: true
     },
     fechaCita: {
-        type: Date,
+        type: String,
         require: true,
-        trim: true,
-        unique: true
+        trim: true
     },
 
     horaCita:{
-        type: Date,
+        type: String,
         require: true,
         trim: true
     },
@@ -43,4 +42,4 @@ const agendaCitaSchema= mongoose.Schema({
 });
 
 const AgendaCita= mongoose.model("AgendaCita", agendaCitaSchema);
-export default AgendaCita;
+export default AgendaCita;  

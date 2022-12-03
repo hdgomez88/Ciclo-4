@@ -1,9 +1,10 @@
 import  express from "express";
 const router= express.Router();
-import {agregar,listar,eliminar,editar,listarUno, autenticar, crearCuenta} from '../../controllers/auth/usuarioController.js';
+import {agregar,listar,eliminar,editar,listarUno, autenticar, crearCuenta,comboMedicos} from '../../controllers/auth/usuarioController.js';
 import validarAutenticacion from "../../middleware/validarAutenticacion.js";
 
 //rutas privadas - solo cuando se autentique
+router.get("/combo-medicos", validarAutenticacion, comboMedicos);
 router.get("/", validarAutenticacion, listar);
 router.get("/:id", validarAutenticacion, listarUno);
 router.post("/", validarAutenticacion, agregar);

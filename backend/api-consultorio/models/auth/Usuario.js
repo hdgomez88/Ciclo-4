@@ -21,7 +21,7 @@ const usuarioSchema= mongoose.Schema({
         trim: true,
     },
 
-    celularUsuario: {
+    celularUsuario: { 
         type: Number,
         require: true,
         trim: true,

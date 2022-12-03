@@ -3,6 +3,7 @@
 import express from "express";
 import dotenv from "dotenv";
 import conectarDB from "./config/db.js";
+import cors from "cors";
 
 //importar archivos de rutas
 
@@ -26,6 +27,24 @@ dotenv.config();
 //conectar el backend a la base de datos
 conectarDB();
 
+//permitir conexiones entrantes de otros host o dominios con cors
+
+const listaBlanca= [process.env.FRONTEND_URL];
+const corsOpciones={
+    origin: function(origin,callback){
+        if (listaBlanca.includes(origin)) {
+            //puede consultar el api
+            callback(null, true);
+        }else{
+            //no esta permitido
+            callback(new Error("Error de cors. No tiene permisos."))
+        }
+    }
+};
+
+//app.use(cors(corsOpciones));
+app.use(cors());
+
 //definicion de rutas
 app.use("/api/roles", rolRoutes);
 app.use("/api/usuarios", usuarioRoutes);
@@ -41,4 +60,4 @@ const PORT= process.env.PORT || 4000;
 
 app.listen(4000, () => {
     console.log(`servidor corriendo en el puerto ${PORT}`);
-});
+}); 
