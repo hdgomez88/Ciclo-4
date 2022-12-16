@@ -3,15 +3,18 @@ import BreadCrumb from '../../componentes/BreadCrumb';
 import Header from '../../componentes/Header';
 import Sidebar from '../../componentes/Sidebar';
 import APIInvoke from '../../helpers/APIInvoke.js';
+import dominios from '../../helpers/dominios.js';
 import mensaje from '../../helpers/mensajes.js';
-import { Link } from "react-router-dom"
 
-const EspecialidadesAdmin = () => {
+
+const MisCitasAdmin = () => {
+
+    const idUsuario=localStorage.getItem('iduser');
 
     const [arreglo, setArreglo] = useState([]);
 
     const obtenerListado = async () => {
-        const response = await APIInvoke.invokeGET(`/api/especialidades`)
+        const response = await APIInvoke.invokeGET(`/api/reserva-citas/citas/${idUsuario}`);
         setArreglo(response);
     }
 
@@ -19,15 +22,22 @@ const EspecialidadesAdmin = () => {
         obtenerListado();
     }, []);
 
-    const borrar = async (e, id) => {
-        e.preventDefault();
-        const response = await APIInvoke.invokeDELETE(`/api/especialidades/${id}`)
+    const updateEstadoAgendaCita= async (id)=>{
+        const body={
+            estadoCita: dominios.ESTADO_AGENDA_CITA_CANCELADA
+        }
+        await APIInvoke.invokePUT(`/api/agenda-citas/${id}`, body);
+    }
 
-        if (response.ok === "SI") {
+    const CancelarCita= async (e, id)=>{
+        e.preventDefault();
+
+        const response = await APIInvoke.invokeDELETE(`/api/reserva-citas/${id}`);
+
+        if (response.ok=== "SI"){
             mensaje('success', response.msg);
-            obtenerListado();
-        } else {
-            mensaje('error', response.msg);
+        }else{
+            mensaje('error', response.msg)
         }
     }
 
@@ -39,9 +49,9 @@ const EspecialidadesAdmin = () => {
             <main id="main" className="main">
                 <BreadCrumb
                     breadCrumb1={"Citas Médicas"}
-                    breadCrumb2={"Listado Especialidades"}
-                    breadCrumb3={""}
-                    ruta={"/especialidades-admin"}
+                    breadCrumb2={"Listado Citas"}
+                    breadCrumb3={"Mis Citas"}
+                    ruta={"/reserva-citas-admin"}
                 />
                 <section className="section dashboard">
                     <div className="row">
@@ -50,14 +60,12 @@ const EspecialidadesAdmin = () => {
 
                                 <div className="card">
                                     <div className="card-body">
-                                        <h5 className="card-title">Especialidades</h5>
-                                        <div className="col-lg-12 mb-3">
-                                            <Link to={"/especialidades-crear"} className="btn btn-primary">Crear</Link>
-                                        </div>
+                                        <h5 className="card-title">Mis Citas</h5>
+                                        
                                         {
                                             arreglo.length === 0 ?
                                                 <div className="alert alert-warning alert-dismissible fade show" role="alert">
-                                                    No existen especialidades.
+                                                    No tiene Citas reservadas.
                                                     <button type="button" className="btn-close" data-bs-dismiss="alert" aria-label="Close" />
                                                 </div>
                                                 :
@@ -65,8 +73,11 @@ const EspecialidadesAdmin = () => {
                                                     <table className="table table-bordered">
                                                         <thead>
                                                             <tr>
-                                                                <th style={{ width: '10%', textAlign: "center" }}>Id</th>
-                                                                <th style={{ width: '70%', textAlign: "center" }}>Especialidad</th>
+                                                                <th style={{ width: '10%', textAlign: "center" }}>Fecha</th>
+                                                                <th style={{ width: '10%', textAlign: "center" }}>Hora</th>
+                                                                <th style={{ width: '20%', textAlign: "center" }}>Especialidad</th>
+                                                                <th style={{ width: '30%', textAlign: "center" }}>Medico</th>
+                                                                <th style={{ width: '10%', textAlign: "center" }}>Consultorio</th>
                                                                 <th style={{ width: '10%', textAlign: "center" }}>Opciones</th>
                                                             </tr>
                                                         </thead>
@@ -75,15 +86,15 @@ const EspecialidadesAdmin = () => {
                                                                 arreglo.map(
                                                                     elemento =>
                                                                         <tr key={elemento._id}>
-                                                                            <td style={{ textAlign: "center" }}>{elemento._id}</td>
-                                                                            <td style={{ textAlign: "center" }}>{elemento.nombreEspecialidad}</td>
+                                                                            <td style={{ textAlign: "center" }}>{elemento.idAgendaCita.fechaCita}</td>
+                                                                            <td style={{ textAlign: "center" }}>{elemento.idAgendaCita.horaCita}</td>
+                                                                            <td style={{ textAlign: "center" }}>{elemento.idEspecialidad.nombreEspecialidad}</td>
                                                                             <td style={{ textAlign: "center" }}>
-                                                                                <Link to={`/especialidades-editar/${elemento._id}`} className="btn btn-primary btn-sm" title='Editar'>
-                                                                                    <i className="bi bi-pencil-square"></i>
-                                                                                </Link>
-                                                                                &nbsp;
-                                                                                <button onClick={(e) => borrar(e, elemento._id)} type="button" className="btn btn-danger btn-sm" title='Borrar'>
-                                                                                    <i className="bi bi-trash"></i></button>
+                                                                                {elemento.idMedico.nombreUsuario} {elemento.idMedico.apellidosUsuario}</td>
+                                                                            <td style={{ textAlign: "center" }}>{elemento.idAgendaCita.numeroConsultorio}</td>                                                                           
+                                                                            <td style={{ textAlign: "center" }}>
+                                                                                <button onClick={(e) => CancelarCita(e, elemento._id)} type="button" className="btn btn-danger btn-sm" title='Cancelar Cita'>
+                                                                                    <i className="bi bi-x-circle"></i></button>
                                                                             </td>
                                                                         </tr>
                                                                 )
@@ -111,4 +122,4 @@ const EspecialidadesAdmin = () => {
     );
 }
 
-export default EspecialidadesAdmin;
+export default MisCitasAdmin;

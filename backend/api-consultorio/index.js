@@ -58,6 +58,6 @@ app.use("/api/medicamento", medicamentoRoutes);
 //leyendo el puerto desde la variable de ambiente
 const PORT= process.env.PORT || 4000;
 
-app.listen(4000, () => {
+app.listen(PORT, () => {
     console.log(`servidor corriendo en el puerto ${PORT}`);
 }); 

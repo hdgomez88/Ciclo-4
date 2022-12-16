@@ -8,6 +8,8 @@ import AgendaCitasEditar from './paginas/citas_medicas/AgendaCitasEditar';
 import EspecialidadesAdmin from './paginas/citas_medicas/EspecialidadesAdmin';
 import EspecialidadesCrear from './paginas/citas_medicas/EspecialidadesCrear';
 import EspecialidadesEditar from './paginas/citas_medicas/EspecialidadesEditar';
+import MisCitasAdmin from './paginas/citas_medicas/MisCitasAdmin';
+import ReservarCitasAdmin from './paginas/citas_medicas/ReservarCitasAdmin';
 import RolesAdmin2 from './paginas/configuracion/RolesAdmin2';
 import RolesCrear from './paginas/configuracion/RolesCrear';
 import RolesEditar from './paginas/configuracion/RolesEditar';
@@ -36,6 +38,8 @@ function App() {
           <Route path="/agenda-citas-admin" exact element={<AgendaCitasAdmin/>}/>
           <Route path="/agenda-citas-crear" exact element={<AgendaCitasCrear/>}/>
           <Route path="/agenda-citas-editar/:id" exact element={<AgendaCitasEditar/>}/>
+          <Route path="/reserva-citas-admin" exact element={<ReservarCitasAdmin/>}/>
+          <Route path="/mis-citas" exact element={<MisCitasAdmin/>}/>
         </Routes>
       </Router>
     </>

@@ -32,7 +32,7 @@ const Header = () => {
                 <div className="d-flex align-items-center justify-content-between">
                     <Link to={"#"} className="logo d-flex align-items-center">
                         <img src={Logo} alt="Logo" />
-                        <span className="d-none d-lg-block">App Consultorio</span>
+                        <span className="d-none d-lg-block">Medical Office</span>
                     </Link>
                     <i className="bi bi-list toggle-sidebar-btn" onClick={ocultarMenu} />
                 </div>{/* End Logo */}

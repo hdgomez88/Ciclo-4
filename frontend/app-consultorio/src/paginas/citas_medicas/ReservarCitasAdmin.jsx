@@ -6,14 +6,13 @@ import APIInvoke from '../../helpers/APIInvoke.js';
 import dominios from '../../helpers/dominios.js';
 import mensaje from '../../helpers/mensajes.js';
 import formatoFecha from '../../helpers/formatoFecha.js';
-import { Link } from "react-router-dom"
 
-const AgendaCitasAdmin = () => {
+const ReservarCitasAdmin = () => {
 
     const [arreglo, setArreglo] = useState([]);
 
     const obtenerListado = async () => {
-        const response = await APIInvoke.invokeGET(`/api/agenda-citas`)
+        const response = await APIInvoke.invokeGET(`/api/agenda-citas/citas-disponibles`)
         setArreglo(response);
     }
 
@@ -21,15 +20,34 @@ const AgendaCitasAdmin = () => {
         obtenerListado();
     }, []);
 
-    const borrar = async (e, id) => {
-        e.preventDefault();
-        const response = await APIInvoke.invokeDELETE(`/api/agenda-citas/${id}`)
+    const updateEstadoAgendaCita= async (id)=>{
+        const body={
+            estadoCita: dominios.ESTADO_AGENDA_CITA_NO_DISPONIBLE
+        }
+        await APIInvoke.invokePUT(`/api/agenda-citas/${id}`, body);
+    }
 
-        if (response.ok === "SI") {
+    const reservarCita= async (e, idCita, medico, especialidad)=>{
+        console.log(medico);
+        e.preventDefault();
+        const idUsuario=localStorage.getItem('iduser');
+
+        const body={
+            idAgendaCita:idCita,
+            idUsuario:idUsuario,
+            idMedico:medico,
+            idEspecialidad:especialidad
+
+        }
+
+        const response = await APIInvoke.invokePOST(`/api/reserva-citas`, body);
+
+        if (response.ok=== "SI"){
+            updateEstadoAgendaCita(idCita);
             mensaje('success', response.msg);
             obtenerListado();
-        } else {
-            mensaje('error', response.msg);
+        }else{
+            mensaje('error', response.msg)
         }
     }
 
@@ -41,9 +59,9 @@ const AgendaCitasAdmin = () => {
             <main id="main" className="main">
                 <BreadCrumb
                     breadCrumb1={"Citas Médicas"}
-                    breadCrumb2={"Agenda Citas"}
+                    breadCrumb2={"Listado Citas"}
                     breadCrumb3={""}
-                    ruta={"/agenda-citas-admin"}
+                    ruta={"/reserva-citas-admin"}
                 />
                 <section className="section dashboard">
                     <div className="row">
@@ -52,10 +70,8 @@ const AgendaCitasAdmin = () => {
 
                                 <div className="card">
                                     <div className="card-body">
-                                        <h5 className="card-title">Agenda de Citas</h5>
-                                        <div className="col-lg-12 mb-3">
-                                            <Link to={"/agenda-citas-crear"} className="btn btn-primary">Crear</Link>
-                                        </div>
+                                        <h5 className="card-title">Citas</h5>
+                                        
                                         {
                                             arreglo.length === 0 ?
                                                 <div className="alert alert-warning alert-dismissible fade show" role="alert">
@@ -97,12 +113,8 @@ const AgendaCitasAdmin = () => {
 
                                                                             </td>
                                                                             <td style={{ textAlign: "center" }}>
-                                                                                <Link to={`/agenda-citas-editar/${elemento._id}`} className="btn btn-primary btn-sm" title='Editar'>
-                                                                                    <i className="bi bi-pencil-square"></i>
-                                                                                </Link>
-                                                                                &nbsp;
-                                                                                <button onClick={(e) => borrar(e, elemento._id)} type="button" className="btn btn-danger btn-sm" title='Borrar'>
-                                                                                    <i className="bi bi-trash"></i></button>
+                                                                                <button onClick={(e) => reservarCita(e, elemento._id,elemento.idMedico._id,elemento.idEspecialidad._id)} type="button" className="btn btn-primary btn-sm" title='Reservar Cita'>
+                                                                                    <i className="bi bi-person-plus-fill"></i></button>
                                                                             </td>
                                                                         </tr>
                                                                 )
@@ -130,4 +142,4 @@ const AgendaCitasAdmin = () => {
     );
 }
 
-export default AgendaCitasAdmin;
+export default ReservarCitasAdmin;

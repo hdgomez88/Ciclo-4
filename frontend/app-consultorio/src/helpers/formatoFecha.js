@@ -16,7 +16,7 @@ const formatoFecha=(fecha, tipo)=>{
             anno=arregloFecha[0];
             mes=arregloFecha[1];
             dia=arregloFecha[2];
-            fechaFinal=`${dia}-${mes}-${anno}`;
+            fechaFinal=`${dia}/${mes}/${anno}`;
             break;
 
         default:
@@ -25,4 +25,4 @@ const formatoFecha=(fecha, tipo)=>{
     }
     return fechaFinal;
 }
-export default formatoFecha
+export default formatoFecha;

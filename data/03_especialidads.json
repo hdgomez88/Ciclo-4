@@ -1,0 +1,65 @@
+[{
+  "_id": {
+    "$oid": "6388fc7522859527c2d7e936"
+  },
+  "nombreEspecialidad": "Medicina General",
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1669921909775"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1669921909775"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6389135d414ee4e5bdbf9d71"
+  },
+  "nombreEspecialidad": "Odontología",
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1669927773566"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1669929219639"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "638be72af5851b27777437cc"
+  },
+  "nombreEspecialidad": "Cardiología",
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1670113066963"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1670113066963"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "639343ef72929226ce54bf36"
+  },
+  "nombreEspecialidad": "Medicina Interna",
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1670595567221"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1670595567221"
+    }
+  },
+  "__v": 0
+}]

@@ -1,6 +1,15 @@
 import AgendaCita from "../../models/citas_medicas/AgendaCita.js";
+import dominios from "../../helpers/dominios.js";
 
 const agregar= async(req, res) => {
+    const {idMedico,fechaCita,horaCita}=req.body;
+    const existeAgendaCita = await AgendaCita.findOne({idMedico,fechaCita,horaCita});
+
+    if(existeAgendaCita){
+        const error = new Error("Ya existe una Agenda de Cita con la fecha y hora asignada.");
+        return res.status(400).json({msg:error.message, ok: "NO"});
+    }
+
     try {
         const agendaCita= new AgendaCita(req.body);
         const agendaCitaGuardada= await agendaCita.save();
@@ -19,9 +28,9 @@ const listar= async(req, res) => {
             apellidosUsuario:1,
             _id:0
         }
-    ).populate(
+    ).populate( 
         'idEspecialidad',{
-            nombreEspecialidad:1,
+            nombreEspecialidad:1, 
             _id:0
         }
     )
@@ -93,10 +102,28 @@ const listarUno= async(req, res) => {
     res.json(agendaCita); 
 }
 
+const citasDisponibles= async(req, res) => {
+    const agendaCitas= await AgendaCita.find({"estadoCita":dominios.ESTADO_AGENDA_CITA_DISPONIBLE}      
+    ).populate(
+        'idMedico',{
+            nombreUsuario:1,
+            apellidosUsuario:1,
+            _id:1
+        }
+    ).populate( 
+        'idEspecialidad',{
+            nombreEspecialidad:1, 
+            _id:1
+        }
+    )
+    res.json(agendaCitas)
+}
+
 export {
     agregar,
     listar,
     eliminar,
     editar,
-    listarUno 
+    listarUno,
+    citasDisponibles 
 }

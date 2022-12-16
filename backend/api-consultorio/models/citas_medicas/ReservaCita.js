@@ -13,6 +13,20 @@ const reservaCitaSchema= mongoose.Schema({
         ref:"Usuario",
         require: true,
         trim: true
+    },
+
+    idMedico:{
+        type: mongoose.Schema.Types.ObjectId,
+        ref:"Usuario",
+        require: true, 
+        trim: true
+    },
+
+    idEspecialidad:{
+        type: mongoose.Schema.Types.ObjectId,
+        ref:"Especialidad",
+        require: true,
+        trim: true
     }
 }, {
     timestamps: true

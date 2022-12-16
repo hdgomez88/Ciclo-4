@@ -124,7 +124,7 @@ const AgendaCitasEditar = () => {
                                         <form onSubmit={onSubmit}>
                                             <div className="col-lg-8 mb-3">
                                                 <div className="row mb-3">
-                                                    <label htmlFor="medico" className="col-sm-2 col-form-label">Seleccione un Médico</label>
+                                                    <label htmlFor="medico" className="col-sm-12 col-form-label">Seleccione un Médico</label>
                                                     <Form.Select aria-label="Default select example"
                                                         style={{ cursor: 'pointer' }}
                                                         id="medico"
@@ -143,7 +143,7 @@ const AgendaCitasEditar = () => {
 
                                                 </div>
                                                 <div className="row mb-3">
-                                                    <label htmlFor="especialidad" className="col-sm-2 col-form-label">Seleccione una Especialidad</label>
+                                                    <label htmlFor="especialidad" className="col-sm-12 col-form-label">Seleccione una Especialidad</label>
                                                     <Form.Select aria-label="Default select example"
                                                         style={{ cursor: 'pointer' }}
                                                         id="especialidad"
@@ -162,7 +162,7 @@ const AgendaCitasEditar = () => {
 
                                                 </div>
                                                 <div className="row mb-3">
-                                                    <label htmlFor="fecha" className="col-sm-2 col-form-label">Fecha</label>
+                                                    <label htmlFor="fecha" className="col-sm-6 col-form-label">Fecha</label>
                                                     <div className="col-sm-10">
                                                         <input type="date"
                                                             style={{cursor: 'pointer'}}
@@ -177,7 +177,7 @@ const AgendaCitasEditar = () => {
 
                                                 </div>
                                                 <div className="row mb-3">
-                                                    <label htmlFor="hora" className="col-sm-2 col-form-label">Hora</label>
+                                                    <label htmlFor="hora" className="col-sm-6 col-form-label">Hora</label>
                                                     <div className="col-sm-10">
                                                         <input type="time"
                                                             className="form-control"
@@ -191,7 +191,7 @@ const AgendaCitasEditar = () => {
 
                                                 </div>
                                                 <div className="row mb-3">
-                                                    <label htmlFor="numeroConsultorio" className="col-sm-2 col-form-label">Numero de Consultorio</label>
+                                                    <label htmlFor="numeroConsultorio" className="col-sm-6 col-form-label">Numero de Consultorio</label>
                                                     <div className="col-sm-10">
                                                         <input type="number"
                                                             className="form-control"
@@ -205,7 +205,7 @@ const AgendaCitasEditar = () => {
 
                                                 </div>
                                                 <div className="row mb-3">
-                                                    <label htmlFor="estado" className="col-sm-2 col-form-label">Seleccione un Estado</label>
+                                                    <label htmlFor="estado" className="col-sm-6 col-form-label">Seleccione un Estado</label>
                                                     <Form.Select aria-label="Default select example"
                                                         style={{ cursor: 'pointer' }}
                                                         id="estado"

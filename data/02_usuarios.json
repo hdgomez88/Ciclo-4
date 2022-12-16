@@ -1,0 +1,107 @@
+[{
+  "_id": {
+    "$oid": "637c1a01a810dd91d698511b"
+  },
+  "idRol": {
+    "$oid": "636ac6fe697f26e8f826510d"
+  },
+  "nombreUsuario": "Hernan Dario",
+  "apellidosUsuario": "Gomez Gomez",
+  "celularUsuario": 303,
+  "correoUsuario": "hernandario@gmail.com",
+  "direccionUsuario": "calle 23",
+  "usuarioAcceso": "hdg@gmail.com",
+  "claveAcceso": "$2b$12$lucH0wjUvDeLo1VIMEgOH.cgvhe36KBp/RNFFg3bdxERstGr7OmXS",
+  "estadoUsuario": 1,
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1669077505720"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1669077505720"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "637f87a57aa94dfcdca58638"
+  },
+  "idRol": {
+    "$oid": "636ae9ffb24c2fcc2de1b4ea"
+  },
+  "nombreUsuario": "Hernan Dario",
+  "apellidosUsuario": "Gomez Gomez",
+  "celularUsuario": {
+    "$numberLong": "3002735752"
+  },
+  "correoUsuario": "hernan@gmail.com",
+  "direccionUsuario": "cra 16 23 45",
+  "usuarioAcceso": "hdgomez",
+  "claveAcceso": "$2b$12$IomzmG2It2GXOkRgOCeov.z5MU7MGXnOSYi6VwscpBVpxfPE2EmiW",
+  "estadoUsuario": 1,
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1669302181232"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1669302181232"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6388d82855b9c586e412d978"
+  },
+  "idRol": {
+    "$oid": "6380025f7aa94dfcdca593cc"
+  },
+  "nombreUsuario": "luis",
+  "apellidosUsuario": "quintero",
+  "celularUsuario": 322,
+  "correoUsuario": "luis@gmail.com",
+  "direccionUsuario": "calle 120",
+  "usuarioAcceso": "luis123",
+  "claveAcceso": "$2b$12$fnahtHuybgTxtRJon3hFRO8N2xFvEBO79Y2zgvOUxVJ4xmxEl0x0O",
+  "estadoUsuario": 1,
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1669912616471"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1670282864046"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "638bbc507c66849f6b9975af"
+  },
+  "idRol": {
+    "$oid": "6380025f7aa94dfcdca593cc"
+  },
+  "nombreUsuario": "a",
+  "apellidosUsuario": "b",
+  "celularUsuario": 11,
+  "correoUsuario": "ab@gmail.com",
+  "direccionUsuario": "calle 222",
+  "usuarioAcceso": "ab123",
+  "claveAcceso": "$2b$12$dCr4QKDnYnirmz43H5QrN.UpJVHo9e2isf07aKJuNR1VnsNOAiwCW",
+  "estadoUsuario": 1,
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1670102096484"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1670102096484"
+    }
+  },
+  "__v": 0
+}]

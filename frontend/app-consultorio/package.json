@@ -1,5 +1,9 @@
 {
   "name": "app-consultorio",
+  "homepage":"http://consultorio88.cloudatadev.xyz",
+  "engines": {
+    "node": "16.x"
+  },
   "version": "0.1.0",
   "private": true,
   "dependencies": {

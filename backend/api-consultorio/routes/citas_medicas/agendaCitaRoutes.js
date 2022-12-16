@@ -1,8 +1,9 @@
 import  express from "express";
 const router= express.Router();
-import {agregar,listar,eliminar,editar,listarUno} from '../../controllers/citas_medicas/agendaCitaController.js';
+import {agregar,listar,eliminar,editar,listarUno,citasDisponibles} from '../../controllers/citas_medicas/agendaCitaController.js';
 
 //rutas privadas - solo cuando se autentique
+router.get("/citas-disponibles", citasDisponibles);
 router.get("/", listar);
 router.get("/:id", listarUno);
 router.post("/", agregar);

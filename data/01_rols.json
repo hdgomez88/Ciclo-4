@@ -1,19 +1,69 @@
 [{
   "_id": {
-    "$oid": "636ac6eb697f26e8f826510b"
-  },
-  "nombreRol": "MEDICOS",
-  "estadoRol": 2
-},{
-  "_id": {
     "$oid": "636ac6fe697f26e8f826510d"
   },
-  "nombreRol": "PACIENTE",
-  "estadoRol": 1
+  "nombreRol": "PACIENTES",
+  "estadoRol": 1,
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1667942142694"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1669747510668"
+    }
+  },
+  "__v": 0
 },{
   "_id": {
     "$oid": "636ae9ffb24c2fcc2de1b4ea"
   },
   "nombreRol": "ADMIN",
-  "estadoRol": 1
+  "estadoRol": 1,
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1667951103200"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1667951103200"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6380025f7aa94dfcdca593cc"
+  },
+  "nombreRol": "MEDICOS",
+  "estadoRol": 1,
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1669333599768"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1669747520262"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6393424d72929226ce54bf27"
+  },
+  "nombreRol": "prueba",
+  "estadoRol": 1,
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1670595149129"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1670595149129"
+    }
+  },
+  "__v": 0
 }]

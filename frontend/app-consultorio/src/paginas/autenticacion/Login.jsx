@@ -119,12 +119,7 @@ const iniciarSesion= async()=>{
                     />
                     <div className="invalid-feedback">Por favor, ingrese su contraseña!</div>
                   </div>
-                  <div className="col-12">
-                    <div className="form-check">
-                      <input className="form-check-input" type="checkbox" name="remember" defaultValue="true" id="rememberMe" />
-                      <label className="form-check-label" htmlFor="rememberMe">Recordarme</label>
-                    </div>
-                  </div>
+                 
                   <div className="col-12">
                     <button className="btn btn-primary w-100" type="submit">Ingresar</button>
                   </div>

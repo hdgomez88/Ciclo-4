@@ -1,4 +1,4 @@
-import mongoose, { Mongoose } from "mongoose";
+import mongoose from "mongoose";
 
 const agendaCitaSchema= mongoose.Schema({
     idMedico:{
@@ -17,13 +17,14 @@ const agendaCitaSchema= mongoose.Schema({
     fechaCita: {
         type: String,
         require: true,
-        trim: true
+        trim: true,
+        unique: false 
     },
 
     horaCita:{
         type: String,
         require: true,
-        trim: true
+        trim: true 
     },
 
     numeroConsultorio:{
@@ -38,7 +39,7 @@ const agendaCitaSchema= mongoose.Schema({
         trim: true
     }
 }, {
-    timestamps: true
+    timestamps: true 
 });
 
 const AgendaCita= mongoose.model("AgendaCita", agendaCitaSchema);

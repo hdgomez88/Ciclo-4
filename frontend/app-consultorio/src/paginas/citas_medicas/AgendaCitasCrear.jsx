@@ -5,7 +5,7 @@ import Sidebar from '../../componentes/Sidebar';
 import APIInvoke from '../../helpers/APIInvoke.js';
 import mensaje from '../../helpers/mensajes.js';
 import { useNavigate } from "react-router-dom"
-import dominios from '../../helpers/dominios';
+import dominios from '../../helpers/dominios.js';
 import Form from 'react-bootstrap/Form';
 
 const AgendaCitasCrear = () => {
@@ -36,7 +36,7 @@ const AgendaCitasCrear = () => {
     useEffect(() => {
         comboEspecialidades();
         comboMedicos();
-        document.getElementById('medico').focus()
+        document.getElementById('medico').focus();
     }, []);
 
     const onSubmit = (e) => {
@@ -48,7 +48,7 @@ const AgendaCitasCrear = () => {
             mensaje('error', 'Debe seleccionar una Especialidad.');
         } else {
             crear()
-        } 
+        }
 
 
     }
@@ -111,7 +111,7 @@ const AgendaCitasCrear = () => {
                                         <form onSubmit={onSubmit}>
                                             <div className="col-lg-8 mb-3">
                                                 <div className="row mb-3">
-                                                    <label htmlFor="medico" className="col-sm-2 col-form-label">Seleccione un Médico</label>
+                                                    <label htmlFor="medico" className="col-sm-16 col-form-label">Seleccione un Médico</label>
                                                     <Form.Select aria-label="Default select example"
                                                         style={{ cursor: 'pointer' }}
                                                         id="medico"
@@ -129,8 +129,8 @@ const AgendaCitasCrear = () => {
                                                     </Form.Select>
 
                                                 </div>
-                                                <div className="row mb-3">
-                                                    <label htmlFor="especialidad" className="col-sm-2 col-form-label">Seleccione una Especialidad</label>
+                                                <div className="row mb-4">
+                                                    <label htmlFor="especialidad" className="col-sm-24 col-form-label">Seleccione una Especialidad</label>
                                                     <Form.Select aria-label="Default select example"
                                                         style={{ cursor: 'pointer' }}
                                                         id="especialidad"
@@ -150,12 +150,12 @@ const AgendaCitasCrear = () => {
                                                 </div>
                                                 <div className="row mb-3">
                                                     <label htmlFor="fecha" className="col-sm-2 col-form-label">Fecha</label>
-                                                    <div className="col-sm-10">
+                                                    <div className="col-sm-12">
                                                         <input type="date"
-                                                            style={{cursor: 'pointer'}}
+                                                            style={{ cursor: 'pointer' }}
                                                             className="form-control"
-                                                            id='fecha'
-                                                            name='fecha'
+                                                            id="fecha"
+                                                            name="fecha"
                                                             value={fecha}
                                                             onChange={e => setFecha(e.target.value)}
                                                             required
@@ -165,11 +165,11 @@ const AgendaCitasCrear = () => {
                                                 </div>
                                                 <div className="row mb-3">
                                                     <label htmlFor="hora" className="col-sm-2 col-form-label">Hora</label>
-                                                    <div className="col-sm-10">
+                                                    <div className="col-sm-12">
                                                         <input type="time"
                                                             className="form-control"
-                                                            id='hora'
-                                                            name='hora'
+                                                            id="hora"
+                                                            name="hora"
                                                             value={hora}
                                                             onChange={e => setHora(e.target.value)}
                                                             required
@@ -178,7 +178,7 @@ const AgendaCitasCrear = () => {
 
                                                 </div>
                                                 <div className="row mb-3">
-                                                    <label htmlFor="numeroConsultorio" className="col-sm-2 col-form-label">Numero de Consultorio</label>
+                                                    <label htmlFor="numeroConsultorio" className="col-sm-6 col-form-label">Numero de Consultorio</label>
                                                     <div className="col-sm-10">
                                                         <input type="number"
                                                             className="form-control"
@@ -191,7 +191,7 @@ const AgendaCitasCrear = () => {
                                                     </div>
 
                                                 </div>
-                                                
+
 
                                             </div>
                                             <div className='row'>
